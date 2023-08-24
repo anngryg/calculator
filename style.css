@@ -1,0 +1,100 @@
+:root {
+    --calculator-color: rgba(0, 0, 0, 0.838);
+    --buttons-color: rgba(1, 1, 1, 0.864);
+    --output-color: rgb(13, 13, 13);
+    --border-bordershadow-color: rgba(0, 0, 0, 0.604);
+    --font-family: Verdana, Geneva, Tahoma, sans-serif;
+    --text-color: rgb(255, 255, 255);
+}
+
+html {
+    height: 100vh;
+    background: linear-gradient(156deg, rgba(188,115,0,1) 0%, rgba(248,135,37,1) 35%, rgba(255,0,76,1) 100%);
+    font-size: 150%;
+    color: var(--text-color);
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main {
+    background-color: var(--calculator-color);
+    width: 400px;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 30px;
+    border: 2px solid var(--border-bordershadow-color);
+    box-shadow: 10px 15px 3px var(--border-bordershadow-color);
+}
+
+.window {
+    font-family: var(--font-family);
+    background-color: var(--output-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.484);
+    border-radius: 10px;
+    margin: 5px 0 30px 0;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.window .previous{
+    color:rgba(255, 255, 255, 0.666);
+    font-size: 80%;
+}
+
+.window .new{
+
+    font-size: 140%;
+
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    justify-items: center;
+    gap: 20px;
+}
+
+#AC {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    width: 180px;
+    background-color: rgba(255, 0, 76, 0.777);
+}
+
+#C {
+    grid-column-start: 3;
+    grid-column-end: 5;    
+    width: 180px;
+    background-color: rgb(248, 136, 37);
+}
+
+#result{
+    background-color: rgba(90, 90, 90, 0.653);
+}
+
+.button {
+    color:var(--text-color);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.484);
+    font-family: var(--font-family);
+    font-size: 80%;
+    background-color: var(--buttons-color);
+    height: 60px;
+    width: 80px;
+    box-shadow: 5px 5px 3px var(--border-bordershadow-color);
+}
+
+button:hover {
+    transform: scale(1.1);
+    cursor: crosshair;
+}
