@@ -43,6 +43,7 @@ body {
     margin: 5px 0 30px 0;
     word-wrap: break-word;
     word-break: break-all;
+    height: 60px;
 }
 
 .window .previous{
@@ -50,7 +51,7 @@ body {
     font-size: 80%;
 }
 
-.window .new{
+.window .current{
 
     font-size: 140%;
 
