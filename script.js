@@ -28,7 +28,7 @@ deleteBtn.addEventListener('click', () => {
 
 function deleteLast(){
     if(currentNum.length === 1){
-        currentNum = ''
+        currentNum = '';
         currentDisplay.textContent = currentNum;
     }else{
         currentNum = currentNum.substring(0, currentNum.length - 1);
@@ -69,10 +69,18 @@ function handleOperator(operatorInput){
 }
 
 result.addEventListener('click', ()=>{
-    previousDisplay.textContent = previousNum + operator + currentNum;
-    operate();
-    currentNum = currentDisplay.textContent;
-
+    if(currentNum === "" && previousNum === ""){
+        currentNum = "";
+        previousNum = "";
+    }else if(currentNum !=="" && previousNum === ""){
+        currentDisplay.textContent = currentNum;
+    }else if(currentNum === "" && previousNum !== ""){
+        previousDisplay.textContent = "";
+        currentDisplay.textContent = previousNum;
+    }else{
+        previousDisplay.textContent = previousNum + operator + currentNum;
+        operate();
+    }
 })
 
 function operate(){
@@ -81,20 +89,23 @@ function operate(){
     
     if(operator==='+'){
         let added = add(previousNum, currentNum);
-        currentDisplay.textContent = added;
+        currentDisplay.textContent = roundNumber(added);
     
     }else if(operator==='-'){
         let substracted = substract(previousNum, currentNum);
-        currentDisplay.textContent = substracted;
+        currentDisplay.textContent = roundNumber(substracted);
    
     }else if(operator==='x'){
         let mulitplied = multiply(previousNum, currentNum);
-        currentDisplay.textContent = mulitplied;
+        currentDisplay.textContent = roundNumber(mulitplied);
      
     }else if(operator==='÷'){
+        if(currentNum===0){
+            currentDisplay.textContent = 'Error'; 
+        }else{
         let divided = divide(previousNum, currentNum);
-        currentDisplay.textContent = divided;
- 
+        currentDisplay.textContent = roundNumber(divided);
+        }
     }
 
 }
@@ -116,4 +127,25 @@ function divide(a,b){
     return a/b;
 }
 
+function roundNumber(num) {
+    return Math.round(num*100000) / 100000;
+}
+/*
+keyboard input 
+*/
+document.addEventListener('keydown', getKeyboardInput);
 
+function getKeyboardInput(e){
+    e.preventDefault();
+    if(e.key >= "0" && e.key <= "9"){
+        handleNum(e.key);
+    }else if(e.key ==="+" || e.key === '-' || e.key === '*' || e.key === '/'){
+        handleOperator(e.key);
+    }else if(e.key==='Enter'){
+        result.click(); // Trigger the same action as clicking the "=" button
+    }else if(e.key==='Backspace'){
+        deleteLast();
+    }else if(e.key==='Escape'){
+        clearAll();
+    }
+}
