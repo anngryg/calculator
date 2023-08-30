@@ -1,3 +1,3 @@
 # calculator
 Calculator using Js, CSS and HTML
-check it out on https://anngryg.github.io/calculator/index.html
+check it out: https://anngryg.github.io/calculator/index.html
